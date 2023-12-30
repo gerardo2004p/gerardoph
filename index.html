@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackeo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .hackeo-container {
+      text-align: center;
+    }
+
+    #mensaje {
+      margin-bottom: 20px;
+      font-size: 150%;
+    }
+
+    #boton {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5%;
+      font-size: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hackeo-container">
+  <div id="mensaje">Si estudias programación vas<br>
+     a poder hacer esto</div>
+  <button id="boton" onclick="iniciarHackeo()">Tócame</button>
+</div>
+
+<script>
+  function iniciarHackeo() {
+    // Mostrar alerta
+    alert("Descargando datos del dispositivo");
+
+    // Deshabilitar el botón durante 10 segundos
+    document.getElementById('boton').disabled = true;
+
+    // Contador de 10 segundos
+    var segundosRestantes = 2;
+    var contador = setInterval(function() {
+      segundosRestantes--;
+      if (segundosRestantes <= 0) {
+        clearInterval(contador);
+        // Cambiar el texto después de 10 segundos
+        document.getElementById('mensaje').innerText = "Hackeo completado";
+        // Mostrar cuadro de diálogo al finalizar el contador
+        setTimeout(function() {
+          var confirmacion = confirm("Finalizar");
+          if (confirmacion) {
+            // Navegar a otro archivo al confirmar
+            window.location.href = 'joker.html';
+          }
+        }, 500);
+      }
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
